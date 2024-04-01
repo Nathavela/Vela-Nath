@@ -1,0 +1,50 @@
+@startuml
+
+entity "Animal" {
+  + ID : int
+  --
+  + Nombre : string
+  + Especie_ID : int
+  + Recinto_ID : int
+  + Cuidador_ID : int
+}
+
+entity "Especie" {
+  + ID : int
+  --
+  + Nombre : string
+  + Recinto_ID : int
+}
+
+entity "Recinto" {
+  + ID : int
+  --
+  + Nombre : string
+}
+
+entity "Cuidador" {
+  + ID : int
+  --
+  + Nombre : string
+  + Especialidad : string
+}
+
+entity "Actividad" {
+  + ID : int
+  --
+  + Nombre : string
+  + Dia : string
+  + Horario : string
+}
+
+Animal -- Especie : pertenece a
+Animal -- Recinto : alojado en
+Animal -- Cuidador : cuidado por
+Especie -- Recinto : alojada en
+Recinto -- Animal : alberga
+Cuidador -- Animal : cuida a
+Cuidador -- Especialidad : especialidad
+Actividad -- Recinto : se realiza en
+Actividad -- Cuidador : supervisada por
+
+@enduml
